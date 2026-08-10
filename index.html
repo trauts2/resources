@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#dee2d7">
+<title>Word cards</title>
+<style>
+ *,*::before,*::after{box-sizing:border-box}
+ :root{
+   --ground:#dee2d7;--ground-2:#cdd3c5;--on-ground:#262b2c;--soft:#5b6461;
+   --rule:rgba(38,43,44,.16);--paper:#fcf9f2;--ink:#23282a;--rosette:#ad2f3b;--slate:#47606b;
+   --display:ui-rounded,"SF Pro Rounded","Hiragino Maru Gothic ProN",system-ui,sans-serif;
+   --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+   --ui:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+ }
+ @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+   --ground:#15191b;--ground-2:#1e2427;--on-ground:#e4e8e3;--soft:#99a3a0;
+   --rule:rgba(228,232,227,.18);--paper:#ece7db;--rosette:#bd3743;--slate:#40585f;}}
+ :root[data-theme="dark"]{
+   --ground:#15191b;--ground-2:#1e2427;--on-ground:#e4e8e3;--soft:#99a3a0;
+   --rule:rgba(228,232,227,.18);--paper:#ece7db;--rosette:#bd3743;--slate:#40585f;}
+ body{margin:0;background:var(--ground);color:var(--on-ground);font-family:var(--ui);
+      line-height:1.55;-webkit-font-smoothing:antialiased;padding:44px 20px 60px}
+ .wrap{max-width:620px;margin:0 auto}
+ h1{font-family:var(--display);font-size:clamp(30px,6vw,44px);margin:0 0 10px;letter-spacing:-.025em}
+ .blurb{font-family:var(--serif);font-size:clamp(17px,2.6vw,19px);margin:0 0 34px;color:var(--on-ground)}
+ ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+ a.card{display:block;background:var(--paper);color:var(--ink);border-radius:16px;
+   padding:20px 22px;text-decoration:none;transition:transform .12s}
+ a.card:hover{transform:translateY(-2px)}
+ a.card:focus-visible{outline:2px solid var(--rosette);outline-offset:3px}
+ a.card h2{font-family:var(--display);font-size:22px;margin:0 0 4px;letter-spacing:-.015em}
+ a.card p{margin:0;font-size:15px;color:#6a716e}
+ a.card .n{display:inline-block;margin-top:10px;font-size:11px;font-weight:700;
+   letter-spacing:.11em;text-transform:uppercase;color:#fff;background:var(--rosette);
+   padding:4px 10px;border-radius:999px}
+ footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--rule);
+   font-size:13px;color:var(--soft)}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <h1 id="title"></h1>
+  <p class="blurb" id="blurb"></p>
+  <ul id="list"></ul>
+  <footer id="foot"></footer>
+</div>
+<script>
+const D = {"site": {"title": "Word cards", "blurb": "Vocabulary from children's audiobooks, made for reading aloud together. Each page holds the words worth meeting before the story, with a plain explanation, examples, and questions to ask. Free to use.", "footer": "Built for one four-year-old, shared in case it is useful to anyone else."}, "entries": [{"card": "charlottes-web", "path": "charlottes-web/words", "title": "Charlotte's Web", "blurb": "Twenty-two words to meet before the story, from runt and spinnerets to humble and radiant.", "words": 22}]};
+document.getElementById("title").textContent = D.site.title;
+document.title = D.site.title;
+document.getElementById("blurb").textContent = D.site.blurb;
+document.getElementById("list").innerHTML = D.entries.map(e =>
+  '<li><a class="card" href="' + e.path + '/"><h2>' + e.title + '</h2><p>' + e.blurb +
+  '</p><span class="n">' + e.words + ' words</span></a></li>').join("");
+document.getElementById("foot").textContent = D.site.footer;
+</script>
+
+</body>
+</html>
