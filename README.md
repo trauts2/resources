@@ -1,11 +1,6 @@
-# Resources
+# Word cards
 
-Things made for reading and listening together, kept somewhere they can always be
-found again — usually by scanning a code printed on the thing itself.
-
-## Word cards
-
-Vocabulary from children's audiobooks.
+Vocabulary pages for children's audiobooks, made for reading aloud together.
 
 Each page holds the words worth meeting before a story, with a plain explanation,
 two example sentences and two questions to ask. Built for one four-year-old and
